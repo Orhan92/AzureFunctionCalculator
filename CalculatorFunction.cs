@@ -21,10 +21,10 @@ namespace LocalFunctionProj
 
             try 
             {
-                // string name = req.Query["name"];
-                // string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
-                // dynamic data = JsonConvert.DeserializeObject(requestBody);
-                // name = name ?? data?.name;
+                string name = req.Query["name"];
+                string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
+                dynamic data = JsonConvert.DeserializeObject(requestBody);
+                name = name ?? data?.name;
 
                 double firstValue = 0, secondValue = 0;
 
@@ -32,7 +32,7 @@ namespace LocalFunctionProj
                 secondValue = Convert.ToDouble(req.Query["secondValue"]);
 
                 var sum = firstValue + secondValue;
-                string responseMessage = $"First Value: {firstValue}\nSecond Value: {secondValue}\nTotal sum: {firstValue} + {secondValue} = {sum}";
+                string responseMessage = $"Name: {name}\nFirst Value: {firstValue}\nSecond Value: {secondValue}\nTotal sum: {firstValue} + {secondValue} = {sum}";
 
                 return new OkObjectResult(responseMessage);
             }
