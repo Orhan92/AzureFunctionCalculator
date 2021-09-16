@@ -32,7 +32,7 @@ namespace LocalFunctionProj
                 secondValue = Convert.ToDouble(req.Query["secondValue"]);
 
                 var sum = firstValue + secondValue;
-                string responseMessage = $/*"Name: {name}\n*/First Value: {firstValue}\nSecond Value: {secondValue}\nTotal sum: {firstValue} + {secondValue} = {sum}";
+                string responseMessage = $"First Value: {firstValue}\nSecond Value: {secondValue}\nTotal sum: {firstValue} + {secondValue} = {sum}";
 
                 return new OkObjectResult(responseMessage);
             }
