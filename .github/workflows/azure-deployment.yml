@@ -16,7 +16,7 @@ env:
   DOTNET_VERSION: '3.1'              # set this to the dotnet version to use
 
 jobs:
-  build-and-deploy:
+  build-and-deploy-azure-functions:
     runs-on: windows-latest
     environment: dev
     steps:
@@ -31,7 +31,7 @@ jobs:
     - name: 'Login via Azure CLI'
       uses: azure/login@v1
       with:
-        creds: ${{ secrets.AZURE_RBAC_CREDENTIALS }}
+        creds: ${{ secrets.AZURE_RBAC_CREDENTIALS }} #Configured in repo SECRETS
         
     - name: 'Resolve Project Dependencies Using Dotnet'
       shell: pwsh
@@ -46,6 +46,6 @@ jobs:
       with:
         app-name: ${{ env.AZURE_FUNCTIONAPP_NAME }}
         package: '${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}/output'
-        publish-profile: ${{ secrets.AZURE_FUNCTIONAPP_PUBLISH_PROFILE }}
+        publish-profile: ${{ secrets.AZURE_FUNCTIONAPP_PUBLISH_PROFILE }} #Configured in repo SECRETS
 
 # For more samples to get started with GitHub Action workflows to deploy to Azure, refer to https://github.com/Azure/actions-workflow-samples
